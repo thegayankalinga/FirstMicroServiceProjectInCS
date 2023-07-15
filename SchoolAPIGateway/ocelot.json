@@ -1,0 +1,35 @@
+{
+  "GlobalConfiguration": {},
+  "Routes": [
+    {
+      //One Service 
+      //Direct Service Access Link with Port
+      "DownstreamPathTemplate": "/api/StudentAttendance",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7163
+        }
+      ],
+      //This is the link we are calling from client to API gateway
+      "UpstreamPathTemplate": "/apigateway/AttendenceService",
+      "UpstreamHttpMethod": [ "GET", "PUT", "POST" ]
+    },
+
+    //Second Service 
+    {
+      "DownstreamPathTemplate": "/api/StudentAdmission",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7266
+        }
+      ],
+      "UpstreamPathTemplate": "/apigateway/AdmissionService",
+      "UpstreamHttpMethod": [ "GET", "PUT", "POST" ]
+    }
+  ]
+
+}
